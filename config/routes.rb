@@ -1,4 +1,5 @@
 BooksShop::Application.routes.draw do
+  resources :books
   resources :users
   resource :user_sessions
   match 'login' => 'user_sessions#new', :as => :login

@@ -1,0 +1,16 @@
+<h1>Listing books</h1>
+
+<% @books.each do |book| %>
+  <div>
+    <%= book.title %>
+  </div>
+  <div>
+    <%= book.author %>
+  </div>
+  <div>
+    $<%= book.price %>
+  </div>
+  <%= link_to 'Show', book_path(book.id)%>
+<% end %>
+
+<%= link_to 'New Book', new_book_path %>

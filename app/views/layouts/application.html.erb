@@ -19,7 +19,7 @@
 <%= yield %>
 <% if logged_in? %>
   Logged as : <%= current_user.username%><br />
-  <%= link_to "Shop"%>
+  <%= link_to "Shop", books_path%>
   <%= link_to "Sign out", logout_path%>
 <% else %>
   <%= link_to "Sign in", login_path %>
