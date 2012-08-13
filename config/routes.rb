@@ -1,6 +1,10 @@
 BooksShop::Application.routes.draw do
   resources :books
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
   resource :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

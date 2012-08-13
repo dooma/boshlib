@@ -28,4 +28,13 @@ class UsersController < ApplicationController
 
     redirect_to users_url
   end
+
+  def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      redirect_to login_path, :notice => "Activat"
+    else
+      not_authenticated
+    end
+  end
 end

@@ -11,7 +11,6 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to root_path, :notice => "Login successful."
     else
       redirect_to root_path, :alert => "Login unsuccessful."
-      render "new"
     end
   end
 

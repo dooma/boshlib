@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813114816) do
+ActiveRecord::Schema.define(:version => 20120813130930) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -33,8 +33,12 @@ ActiveRecord::Schema.define(:version => 20120813114816) do
     t.datetime "updated_at",                   :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
   end
 
+  add_index "users", ["activation_token"], :name => "index_users_on_activation_token"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
 end
