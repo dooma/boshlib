@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
   # Destroy session
   def destroy
     logout
-    redirect_to :root_path, :notice => "Logout successful."
+    redirect_to root_path, :notice => "Logout successful."
   end
 end

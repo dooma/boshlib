@@ -8,15 +8,22 @@
 </head>
 <body>
 
-<% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
+<% if notice %>
+  <p id="notice"><%= flash[:notice] %></p>
 <% end %>
-<% if flash[:error] %>
-  <p class="error"><%= flash[:error] %></p>
+<% if alert %>
+  <p id="alert"><%= flash[:alert] %></p>
 <% end %>
+
 
 <%= yield %>
-
+<% if logged_in? %>
+  <%= link_to "Shop"%>
+  <%= link_to "Sign out", logout_path%>
+<% else %>
+  <%= link_to "Sign in", login_path %>
+  <%= link_to "Sign up", new_user_path %>
+<% end %>
 
 </body>
 </html>
