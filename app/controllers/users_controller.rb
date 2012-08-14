@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_login, :only => [:new, :create, :activate]
 
   # GET /users/1.json
   def show
@@ -32,9 +33,9 @@ class UsersController < ApplicationController
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to login_path, :notice => "Activat"
+      redirect_to root_path, :notice => "Activation successfully"
     else
-      not_authenticated
+      redirect_to root_path, :alert => "Account can not be activate"
     end
   end
 end

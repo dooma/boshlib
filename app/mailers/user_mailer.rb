@@ -1,25 +1,15 @@
 class UserMailer < ActionMailer::Base
   default from: "from@example.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.activation_needed_email.subject
-  #
   def activation_needed_email(user)
-    @greeting = "Hi"
-
-    mail to: user.email
+    @user = user
+    @url  = activate_user_url(user.activation_token)
+    mail(:to => user.email, :subject => "Welcome to My Awesome Site")
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.activatoin_success_email.subject
-  #
-  def activatoin_success_email(user)
-    @greeting = "Hi"
-
-    mail to: user.email
+  def activation_success_email(user)
+    @user = user
+    @url = login_url
+    mail(:to => user.email, :subject => "Account successfully activated")
   end
 end

@@ -8,12 +8,6 @@
 </head>
 <body>
 
-<% if notice %>
-  <p id="notice"><%= flash[:notice] %></p>
-<% end %>
-<% if alert %>
-  <p id="alert"><%= flash[:alert] %></p>
-<% end %>
 
 <div class="bar">
   <% if logged_in? %>
