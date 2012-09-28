@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create, :activate]
 
   # GET /users/1.json
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: 'User was successfully created. Please activate email first!'
     else
       render action: "new"
     end
