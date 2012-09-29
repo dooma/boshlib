@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created. Please activate email first!'
+      redirect_to root_path, notice: 'User was successfully created. Please activate email first!'
     else
       render action: "new"
     end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       @user.activate!
       redirect_to root_path, :notice => "Activation successfully"
     else
-      redirect_to root_path, :alert => "Account can not be activate"
+      redirect_to root_path, :alert => "Account can not be activated"
     end
   end
 end
