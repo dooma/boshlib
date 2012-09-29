@@ -30,5 +30,16 @@ describe "UserSessions" do
       click_button 'Login'
       page.should have_content("Login successful")
     end
+
+    it "should logout if user require it" do
+      @user = FactoryGirl.create(:user)
+      @user.activate!
+      visit new_user_sessions_path
+      fill_in "Username", :with => @user.username
+      fill_in "Password", :with => "parola123"
+      click_button "Login"
+      click_link 'Sign out'
+      page.should have_content("Logout successful")
+    end
   end
 end
