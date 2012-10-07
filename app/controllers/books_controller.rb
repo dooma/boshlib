@@ -21,8 +21,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
     else
-      render action: "new"
-    end
+      flash[:alert] = "Can not create book"
+      render action: "new"    end
   end
 
   def update
@@ -31,7 +31,8 @@ class BooksController < ApplicationController
     if @book.update_attributes(params[:book])
       redirect_to @book, notice: 'Book was successfully updated.'
     else
-      render action: "edit"
+     flash.keep[:alert] = "Can not update book properties"    
+     render action: "edit"
     end
   end
 
