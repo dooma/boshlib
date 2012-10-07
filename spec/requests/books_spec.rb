@@ -21,7 +21,7 @@ describe "Books" do
       put book_path(@book.id)
       response.status.should eq(302)
 
-      post books_path, :book => {:title => "x", :description => "description", :price => "14"}
+      post books_path, :book => {:title => "xzf", :description => "description", :price => "14"}
       response.status.should eq(302)
 
       delete book_path(@book.id)
