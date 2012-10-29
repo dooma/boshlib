@@ -3,21 +3,28 @@ require 'spec_helper'
 describe "Books" do
   before (:each) do
     @book = FactoryGirl.create(:book)
+    
+    # create user session
+    @user = FactoryGirl.create(:user)
+    @user.activate!
+    visit new_user_sessions_path
+    fill_in "Username", :with => @user.username
+    fill_in "Password", :with => "parola123" 
+    click_button 'Login'
+    page.should have_content("Login successful")
   end
 
   describe "access pages" do
-    it "should respond with 200" do
+    it "should respond with 302" do
       get books_path
-      response.status.should eq(200)
+      response.status.should eq(302)
 
       get new_book_path
-      response.status.should eq(200)
+      response.status.should eq(302)
 
       get edit_book_path(@book.id)
-      response.status.should eq(200)
-    end
+      response.status.should eq(302)
 
-    it "should respond with 302" do
       put book_path(@book.id)
       response.status.should eq(302)
 

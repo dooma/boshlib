@@ -1,5 +1,10 @@
 require 'spec_helper'
+
 describe BooksController do
+  before (:each) do
+    login_user(user = FactoryGirl.create(:user))
+  end
+
   describe "GET methods" do
     it "should respond 200" do
       get :index
