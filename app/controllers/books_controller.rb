@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_filter :require_login
+
   def index
     @books = Book.all
   end
@@ -22,7 +24,8 @@ class BooksController < ApplicationController
       redirect_to @book, notice: 'Book was successfully created.'
     else
       flash[:alert] = "Can not create book"
-      render action: "new"    end
+      render action: "new"
+    end
   end
 
   def update
