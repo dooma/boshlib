@@ -37,3 +37,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+# include Sorcery test methods
+include Sorcery::TestHelpers::Rails
