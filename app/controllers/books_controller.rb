@@ -39,6 +39,23 @@ class BooksController < ApplicationController
     end
   end
 
+  def hire 
+    @book = Book.find(params[:id])
+    @hired_book = HiredBook.new
+    if @book.units
+      @book.units = @book.units - 1
+      @hired_book.book_id = @book.id
+      @hired_book.expiration_time = Time.now + (60 * 60 * 24 * 14)
+      
+      if @book.save and @hired_book.save
+        redirect_to root_path, notice: 'You hired the book'
+      else
+        flash[:alert] = 'You can not hire this book'
+        render :show
+      end
+    end
+  end
+
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
