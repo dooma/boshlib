@@ -13,5 +13,6 @@ FactoryGirl.define do
     description "A story about love"
     year "1923"
     price "200"
+    units 1
   end
 end
