@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe BooksController do
   before (:each) do
-    login_user(user = FactoryGirl.create(:user))
+    login_user(@user = FactoryGirl.create(:user))
+    @book = FactoryGirl.create(:book)
   end
 
   describe "GET methods" do
@@ -32,6 +33,7 @@ describe BooksController do
     end
 
     it "should render new page if book can't be saved" do
+      @book.destroy
       post :create, :book => {:title => "x", :description => "y"}
       Book.all.should be_empty
       response.should render_template(:new)
@@ -57,6 +59,16 @@ describe BooksController do
       book.title.should_not be_nil
       book.title.should eq("xzf")
       response.should render_template(:edit)
+    end
+
+    it "should rent a book if are enought" do
+      # make sure does exist minimum 1 book
+      if @book.units == 0
+        @book.units = 1
+        @book.save if book.valid?
+      end
+      post :hire, :id => @book.id, :user_id => @user.id 
+      Book.last.units.should eq(0)
     end
   end
 
