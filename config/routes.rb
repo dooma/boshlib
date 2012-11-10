@@ -1,5 +1,9 @@
 BooksShop::Application.routes.draw do
-  resources :books
+  resources :books do
+    collection do
+      post :hire
+    end
+  end
   resources :users do
     member do
       get :activate
