@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :year
       t.text :description
       t.string :price
+      t.integer :units
 
       t.timestamps
     end
