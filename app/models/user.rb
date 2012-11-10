@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email
   validates_presence_of :username
 
+  has_many :books, :dependent => :destroy
+  has_many :hired_book, :dependent => :destroy
 end
