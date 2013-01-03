@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20121110182114) do
     t.text     "description"
     t.string   "price"
     t.integer  "units"
+    t.boolean  "hire_status"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -27,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121110182114) do
   create_table "hired_books", :force => true do |t|
     t.integer  "book_id"
     t.date     "expiration_time"
+    t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

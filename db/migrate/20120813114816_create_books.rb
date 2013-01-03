@@ -7,6 +7,8 @@ class CreateBooks < ActiveRecord::Migration
       t.text :description
       t.string :price
       t.integer :units
+      t.boolean :hire_status
+      t.integer :user_id
 
       t.timestamps
     end
