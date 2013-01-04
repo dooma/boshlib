@@ -12,7 +12,7 @@ Bundle installed
 
 Then setup your favourite database in ```config/database.yml```.
 Once you finished just run following commands:
+
     bundle install
     bundle exec rake db:create db:migrate db:seed
     bundle exec rails server -e PRODUCTION
-   
