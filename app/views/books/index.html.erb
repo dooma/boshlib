@@ -1,5 +1,9 @@
 <h1>Listing books</h1>
 
+<div>
+  <%= link_to 'New book', new_book_path %>
+</div>
+
 <% @books.each do |book| %>
   <div>
     <%= book.title %>
@@ -10,7 +14,12 @@
   <div>
     $<%= book.price %>
   </div>
+  <div>
+    <% if book.hire_status %>
+      <%= "You can hire this book" %>
+    <% else %>
+      <%= "You can not hire this book" %>
+    <% end %>
+  </div>
   <%= link_to 'Show', book_path(book.id)%>
 <% end %>
-
-<%= link_to 'New Book', new_book_path %>

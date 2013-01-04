@@ -15,9 +15,10 @@
     $<%= @book.price %>
   </div>
 <% if current_user == @book.user %>
-  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Edit', edit_book_path(@book) %>
 <% else %>
   <%= link_to 'Hire', hire_books_path(:id => @book.id) %>
+  <%= link_to 'Buy', buy_books_path(:id => @book.id) %>
 <% end %>
-<%= link_to 'Back', books_path %>
+ | <%= link_to 'Back', books_path %>
 

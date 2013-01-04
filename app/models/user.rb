@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   validates_presence_of :username
 
   has_many :books, :dependent => :destroy
-  has_many :hired_book, :dependent => :destroy
+  has_many :hired_books, :dependent => :destroy
 end

@@ -49,11 +49,13 @@ describe "Books" do
       visit book_path(@book.id)
       page.should have_content("A story about love")
       page.should have_content("1923")
-      page.should have_content("Edit")
+      # if book owner is not current user, print Hire/Buy
+      page.should have_content("Hire")
+      page.should have_content("Buy")
       page.should have_content("Back")
     end
 
-    it "should can edit a book" do
+    it "should can edit a book just by book owner" do
       visit edit_book_path(@book.id)
       page.should have_content("Title")
       page.should have_content("Description")

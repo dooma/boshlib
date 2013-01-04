@@ -2,6 +2,7 @@ BooksShop::Application.routes.draw do
   resources :books do
     collection do
       post :hire
+      post :buy
     end
   end
   resources :users do

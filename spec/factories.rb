@@ -14,5 +14,6 @@ FactoryGirl.define do
     year "1923"
     price "200"
     units 1
+    hire_status true
   end
 end
